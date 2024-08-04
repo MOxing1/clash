@@ -3,6 +3,8 @@ http://localhost:25500/sub   openwrt本机docker地址
 https://sub.qichiyu.com/sub  VPS 域名反代 地址/  
 http://192.168.10.5:25500/sub 局域网其他设备地址	  
 
+DIRECT 直连
+Proxy 代理
 规则自定义：  
 ##- PROCESS-NAME,curl,DIRECT #匹配路由自身进程(curl直连)  
 ##- DOMAIN-SUFFIX,google.com,Proxy #匹配域名后缀(交由Proxy代理服务器组)  
