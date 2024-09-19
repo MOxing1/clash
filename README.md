@@ -1,4 +1,4 @@
-排除第一条链接（机场链接）⭐ 香港故转`fallback`!!GROUPID=!1!!  
+排除第一条链接（机场链接）⭐ 香港故转`fallback`!!GROUPID=!0!!  
 
 subconverter后端  
 http://localhost:25500/sub   openwrt本机docker地址  
