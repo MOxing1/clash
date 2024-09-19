@@ -1,3 +1,5 @@
+排除第一条链接（机场链接）⭐ 香港故转`fallback`!!GROUPID=!1!!  
+
 subconverter后端  
 http://localhost:25500/sub   openwrt本机docker地址  
 https://sub.qichiyu.com/sub  VPS 域名反代 地址/  
