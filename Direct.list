@@ -24,6 +24,9 @@ IP-CIDR,180.76.76.76/32,no-resolve
 IP-CIDR,114.114.114.114/32,no-resolve
 IP-CIDR,114.114.115.115/32,no-resolve
 
+#steam下载
+DOMAIN-SUFFIX,steampowered.com,DIRECT
+DOMAIN-SUFFIX,steamcontent.com,DIRECT
 
 # 360
 DOMAIN-SUFFIX,360.com
