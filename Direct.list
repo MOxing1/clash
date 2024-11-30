@@ -1,13 +1,12 @@
 # 直连补充列表(国内域名不解析时，防止走代理使用)
 
-# Steam
-DOMAIN-SUFFIX,steamserver.net
-DOMAIN-SUFFIX,steamstatic.com
-DOMAIN-SUFFIX,steamcontent.com
-DOMAIN-SUFFIX,test.steampowered.com
-DOMAIN-SUFFIX,api.steampowered.com
-DOMAIN-SUFFIX,rmbgame.net
 
+
+  # Steam 下载走直连
+DOMAIN-SUFFIX,steamcontent.com
+DOMAIN-SUFFIX,steam-content-dnld-1.apac.dl.playstation.net
+DOMAIN-SUFFIX,cs.steampowered.com
+DOMAIN-SUFFIX,edge.steam-dns-perf.net
 
 # MyList
 # 域名后缀匹配
