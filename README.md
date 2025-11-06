@@ -1,10 +1,10 @@
 排除第一条链接（机场链接）⭐ 香港故转`fallback`!!GROUPID=!0!!   
 
-添加规则集； 
-新格式二进制： 
-https://github.com/MetaCubeX/meta-rules-dat/tree/meta 
-老格式： 
-https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash 
+添加规则集；  
+新格式二进制：  
+https://github.com/MetaCubeX/meta-rules-dat/tree/meta  
+老格式：  
+https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash  
 
 
 
