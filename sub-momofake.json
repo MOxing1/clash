@@ -24,7 +24,7 @@
     {
       "tag": "🚀 默认代理",
       "type": "selector",
-      "outbounds": ["🎯 全球直连", "🚀 全球自动", "🇭🇰 香港自动", "🇯🇵 日本自动", "🇸🇬 狮城自动", "🇺🇲 美国自动", "🌍 冷门地区", "🎨 全球手动", "🇭🇰 香港手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🎯 全球直连"]
+      "outbounds": ["🤖 AI日本TCP", "🚀 全球自动", "🇭🇰 香港自动", "🇯🇵 日本自动", "🇸🇬 狮城自动", "🇺🇲 美国自动", "🌍 冷门地区", "🎨 全球手动", "🇭🇰 香港手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🎯 全球直连"]
     },
     {
       "tag": "🧠 AI",
@@ -91,24 +91,25 @@
       "type": "selector",
       "outbounds": ["🚀 默认代理", "🎯 全球直连"]
     },
+    {"tag": "🤖 AI日本TCP", "type": "urltest", "outbounds": []},
     {"tag": "🚀 全球自动", "type": "urltest", "outbounds": []},
-    {"tag": "🌍 冷门地区", "type": "urltest", "outbounds": []},
-    {"tag": "🇭🇰 香港自动", "type": "urltest", "outbounds": []},
-    {"tag": "🇯🇵 日本自动", "type": "urltest", "outbounds": []},
-    {"tag": "🇸🇬 狮城自动", "type": "urltest", "outbounds": []},
-    {"tag": "🇺🇲 美国自动", "type": "urltest", "outbounds": []},
     {"tag": "🎨 全球手动", "type": "selector", "outbounds": []},
     {"tag": "🇭🇰 香港手动", "type": "selector", "outbounds": []},
     {"tag": "🇯🇵 日本手动", "type": "selector", "outbounds": []},
     {"tag": "🇸🇬 狮城手动", "type": "selector", "outbounds": []},
     {"tag": "🇺🇲 美国手动", "type": "selector", "outbounds": []},
+    {"tag": "🌍 冷门地区", "type": "urltest", "outbounds": []},
+    {"tag": "🇭🇰 香港自动", "type": "urltest", "outbounds": []},
+    {"tag": "🇯🇵 日本自动", "type": "urltest", "outbounds": []},
+    {"tag": "🇸🇬 狮城自动", "type": "urltest", "outbounds": []},
+    {"tag": "🇺🇲 美国自动", "type": "urltest", "outbounds": []},
     {"tag": "🍃 延迟辅助", "type": "urltest", "outbounds": ["🚀 默认代理", "🎯 全球直连"]},
     {
       "tag": "GLOBAL",
       "type": "selector",
       "outbounds": [
         "🚀 默认代理", "🧠 AI", "📹 YouTube", "🍀 Google", "👨‍💻 Github", "📲 Telegram", "🎵 TikTok", "🎥 Netflix", "💶 PayPal", "🎮 Steam", "🪟 Microsoft", "🐬 OneDrive", "🍏 Apple", "🐠 漏网之鱼",
-        "🚀 全球自动", "🌍 冷门地区", "🇭🇰 香港自动", "🇯🇵 日本自动", "🇸🇬 狮城自动", "🇺🇲 美国自动", "🎨 全球手动", "🇭🇰 香港手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🍃 延迟辅助", "🎯 全球直连"
+        "🚀 全球自动", "🌍 冷门地区", "🤖 AI日本TCP", "🇭🇰 香港自动", "🇯🇵 日本自动", "🇸🇬 狮城自动", "🇺🇲 美国自动", "🎨 全球手动", "🇭🇰 香港手动", "🇯🇵 日本手动", "🇸🇬 狮城手动", "🇺🇲 美国手动", "🍃 延迟辅助", "🎯 全球直连"
       ]
     },
     {"tag": "🎯 全球直连", "type": "direct"}
