@@ -15,7 +15,7 @@
       {"query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1}
     ],
     "final": "foreign",
-    "client_subnet": "223.5.5.0/24",
+    "client_subnet": "8.8.8.0/24",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "reverse_mapping": true
@@ -145,6 +145,34 @@
     ],
     "rule_set": [
       {"tag": "geosite-fakeipfilter", "type": "remote", "format": "source", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/rules/fakeipfilter.json", "download_detour": "🎯 全球直连"},
+      {
+        "tag": "ai-custom",
+        "type": "inline",
+        "rules": [
+          {
+            "domain_suffix": [
+              "anthropic.com",
+              "claude.ai",
+              "cursor.sh",
+              "v0.dev",
+              "vercel.app",
+              "poe.com",
+              "perplexity.ai",
+              "huggingface.co",
+              "replicate.com",
+              "openrouter.ai",
+              "notebooklm.google.com",
+              "oaistatic.com",
+              "oaiusercontent.com",
+              "chatgpt.com",
+              "openai.com",
+              "chat.com",
+              "x.ai",
+              "grok.com"
+            ]
+          }
+        ]
+      }
       {"tag": "geosite-ai", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-!cn.srs", "download_detour": "🎯 全球直连"},
       {"tag": "geosite-youtube", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs", "download_detour": "🎯 全球直连"},
       {"tag": "geosite-google", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs", "download_detour": "🎯 全球直连"},
