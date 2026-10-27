@@ -4,18 +4,19 @@
       {"tag": "local", "type": "local", "prefer_go": true},
       {"tag": "ali", "type": "https", "server": "223.5.5.5"},
       {"tag": "google", "type": "https", "server": "8.8.8.8", "detour": "默认代理"},
-      {"tag": "fakeip", "type": "fakeip", "inet4_range": "198.19.0.0/16", "inet6_range": "2001:db8::/32"}
+      {"tag": "fakeip", "type": "fakeip", "inet4_range": "198.19.0.0/16"}
     ],
     "rules": [
       {"query_type": ["HTTPS", "SVCB"], "action": "reject"},
+      {"query_type": "AAAA", "action": "reject"},
       {"clash_mode": "Direct", "server": "ali"},
       {"clash_mode": "Global", "server": "fakeip"},
       {"rule_set": "geosite-fakeipfilter-cn", "server": "ali"},
       {"rule_set": "geosite-cn", "server": "ali"},
-      {"query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1}
+      {"query_type": "A", "server": "fakeip", "rewrite_ttl": 1}
     ],
     "final": "google",
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "independent_cache": true,
     "cache_capacity": 8192,
     "reverse_mapping": true
@@ -24,7 +25,7 @@
     {"tag": "默认代理", "type": "selector", "outbounds": ["自动选择", "香港自动", "狮城自动", "日本自动", "美国自动", "香港手动", "狮城手动", "日本手动", "美国手动", "手动选择"]},
     {"tag": "AI", "type": "selector", "outbounds": ["AI自动", "美国自动", "狮城自动", "日本自动", "美国手动", "狮城手动", "日本手动", "手动选择", "香港手动"]},
     {"tag": "YouTube", "type": "selector", "outbounds": ["自动选择", "香港自动", "狮城自动", "日本自动", "美国自动", "香港手动", "狮城手动", "日本手动", "美国手动", "手动选择"]},
-    {"tag": "Google", "type": "selector", "outbounds": ["自动选择", "香港自动", "狮城自动", "日本自动", "美国自动", "香港手动", "狮城手动", "日本手动", "美国手动", "手动选择"]},
+    {"tag": "Google", "type": "selector", "outbounds": ["美国自动", "狮城自动", "日本自动", "自动选择", "香港自动", "美国手动", "狮城手动", "日本手动", "香港手动", "手动选择"]},
     {"tag": "Github", "type": "selector", "outbounds": ["自动选择", "香港自动", "狮城自动", "日本自动", "美国自动", "香港手动", "狮城手动", "日本手动", "美国手动", "手动选择"]},
     {"tag": "Telegram", "type": "selector", "outbounds": ["自动选择", "香港自动", "狮城自动", "日本自动", "美国自动", "香港手动", "狮城手动", "日本手动", "美国手动", "手动选择"]},
     {"tag": "TikTok", "type": "selector", "outbounds": ["自动选择", "香港自动", "狮城自动", "日本自动", "美国自动", "香港手动", "狮城手动", "日本手动", "美国手动", "手动选择"]},
@@ -63,7 +64,7 @@
       {"rule_set": "geosite-gemini", "outbound": "AI"},
       {"rule_set": "geosite-openai", "outbound": "AI"},
       {"rule_set": "geosite-anthropic", "outbound": "AI"},
-      {"domain_suffix": ["sydney.bing.com", "suno.ai", "suno.com", "v0.dev", "together.ai", "replicate.com"], "outbound": "AI"},
+      {"domain_suffix": ["waa-pa.clients6.google.com", "ogads-pa.clients6.google.com", "client-api.arkoselabs.com", "events.statsigapi.net", "featuregates.org", "auth0.com", "identrust.com", "intercom.io", "intercomcdn.com", "sydney.bing.com", "suno.ai", "suno.com", "v0.dev", "together.ai", "replicate.com"], "outbound": "AI"},
       {"rule_set": "geosite-ai", "outbound": "AI"},
       {"rule_set": "geosite-youtube", "outbound": "YouTube"},
       {"rule_set": "geosite-google", "outbound": "Google"},
