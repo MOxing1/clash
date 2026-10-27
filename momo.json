@@ -11,8 +11,8 @@
       {"clash_mode": "Direct", "server": "ali"},
       {"clash_mode": "Global", "server": "fakeip"},
       {"rule_set": "geosite-fakeipfilter-cn", "server": "ali"},
-      {"query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1},
-      {"rule_set": "geosite-cn","server": "ali"}
+      {"rule_set": "geosite-cn", "server": "ali"},
+      {"query_type": ["A", "AAAA"], "server": "fakeip", "rewrite_ttl": 1}
     ],
     "final": "google",
     "strategy": "prefer_ipv4",
@@ -22,7 +22,8 @@
   },
   "outbounds": [
     {"tag": "默认代理", "type": "selector", "outbounds": ["香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择"]},
-    {"tag": "AI", "type": "selector", "outbounds": ["香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择"]},
+    {"tag": "AI", "type": "selector", "outbounds": ["美国手动", "日本手动", "狮城手动", "手动选择", "自动选择", "香港手动"]},
+    {"tag": "Gemini", "type": "selector", "outbounds": ["美国手动", "狮城手动", "日本手动", "手动选择", "自动选择", "香港手动"]},
     {"tag": "YouTube", "type": "selector", "outbounds": ["香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择"]},
     {"tag": "Google", "type": "selector", "outbounds": ["香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择"]},
     {"tag": "Github", "type": "selector", "outbounds": ["香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择"]},
@@ -42,7 +43,7 @@
     {"tag": "手动选择", "type": "selector", "outbounds": []},
     {"tag": "自动选择", "type": "urltest", "outbounds": [], "url": "https://clients1.google.com/generate_204", "interval": "30m", "tolerance": 100},
     {"tag": "延迟辅助", "type": "urltest", "outbounds": ["直连"], "url": "http://connect.rom.miui.com/generate_204", "interval": "30m"},
-    {"tag": "GLOBAL", "type": "selector", "outbounds": ["默认代理", "AI", "YouTube", "Google", "Github", "Telegram", "TikTok", "Netflix", "PayPal", "Steam", "Microsoft", "OneDrive", "Apple", "漏网之鱼", "香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择", "延迟辅助", "直连"]},
+    {"tag": "GLOBAL", "type": "selector", "outbounds": ["默认代理", "AI", "Gemini", "YouTube", "Google", "Github", "Telegram", "TikTok", "Netflix", "PayPal", "Steam", "Microsoft", "OneDrive", "Apple", "漏网之鱼", "香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择", "延迟辅助", "直连"]},
     {"tag": "直连", "type": "direct", "domain_resolver": "ali"}
   ],
   "route": {
@@ -53,9 +54,11 @@
       {"type": "logical", "mode": "or", "rules": [{"port": 853}, {"protocol": ["stun", "quic"]}], "action": "reject", "no_drop": true},
       {"network": "icmp", "action": "resolve"},
       {"network": "icmp", "outbound": "直连"},
-      {"ip_is_private": true, "outbound": "直连"},
       {"clash_mode": "Direct", "outbound": "直连"},
       {"clash_mode": "Global", "outbound": "GLOBAL"},
+      {"rule_set": "geosite-gemini", "outbound": "Gemini"},
+      {"rule_set": "geosite-openai", "outbound": "AI"},
+      {"rule_set": "geosite-anthropic", "outbound": "AI"},
       {"rule_set": "geosite-ai", "outbound": "AI"},
       {"rule_set": "geosite-youtube", "outbound": "YouTube"},
       {"rule_set": "geosite-google", "outbound": "Google"},
@@ -80,6 +83,9 @@
     ],
     "rule_set": [
       {"tag": "geosite-fakeipfilter-cn", "type": "remote", "format": "source", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/rules/fakeipfilter-cn.json", "download_detour": "直连"},
+      {"tag": "geosite-gemini", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs", "download_detour": "直连"},
+      {"tag": "geosite-openai", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs", "download_detour": "直连"},
+      {"tag": "geosite-anthropic", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/anthropic.srs", "download_detour": "直连"},
       {"tag": "geosite-ai", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-!cn.srs", "download_detour": "直连"},
       {"tag": "geosite-youtube", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs", "download_detour": "直连"},
       {"tag": "geosite-google", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs", "download_detour": "直连"},
@@ -108,71 +114,71 @@
   },
   "inbounds": [
     {
-      "tag": "dns-in",
-      "type": "direct",
-      "listen": "::",
-      "listen_port": 1053
+          "tag": "dns-in",
+          "type": "direct",
+          "listen": "::",
+          "listen_port": 1053
     },
     {
-      "tag": "http-in",
-      "type": "http",
-      "listen": "::",
-      "listen_port": 8080
+          "tag": "http-in",
+          "type": "http",
+          "listen": "::",
+          "listen_port": 8080
     },
     {
-      "tag": "socks-in",
-      "type": "socks",
-      "listen": "::",
-      "listen_port": 1080
+          "tag": "socks-in",
+          "type": "socks",
+          "listen": "::",
+          "listen_port": 1080
     },
     {
-      "tag": "redirect-in",
-      "type": "redirect",
-      "listen": "::",
-      "listen_port": 7890
+          "tag": "redirect-in",
+          "type": "redirect",
+          "listen": "::",
+          "listen_port": 7890
     },
     {
-      "tag": "tproxy-in",
-      "type": "tproxy",
-      "listen": "::",
-      "listen_port": 7891
+          "tag": "tproxy-in",
+          "type": "tproxy",
+          "listen": "::",
+          "listen_port": 7891
     },
     {
-      "tag": "tun-in",
-      "type": "tun",
-      "interface_name": "momo",
-      "address": [
-        "172.31.0.1/30",
-        "fdfe:dcba:9876::1/126"
-      ],
-      "auto_route": false,
-      "auto_redirect": false
+          "tag": "tun-in",
+          "type": "tun",
+          "interface_name": "momo",
+          "address": [
+                "172.31.0.1/30",
+                "fdfe:dcba:9876::1/126"
+          ],
+          "auto_route": false,
+          "auto_redirect": false
     }
   ],
   "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "store_fakeip": true
-    },
-    "clash_api": {
-      "external_controller": "0.0.0.0:9095",
-      "external_ui": "ui",
-      "external_ui_download_url": "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip",
-      "external_ui_download_detour": "直连",
-      "secret": "",
-      "default_mode": "Rule"
-    }
+      "cache_file": {
+          "enabled": true,
+          "store_fakeip": true
+      },
+      "clash_api": {
+          "external_controller": "0.0.0.0:9095",
+          "external_ui": "ui",
+          "external_ui_download_url": "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip",
+          "external_ui_download_detour": "直连",
+          "secret": "",
+          "default_mode": "Rule"
+      }
   },
   "certificate": {
-    "store": "chrome"
+      "store": "chrome"
   },
   "ntp": {
-    "enabled": true,
-    "server": "time.apple.com"
+      "enabled": true,
+      "server": "time.apple.com"
   },
   "log": {
-    "disabled": false,
-    "level": "info",
-    "timestamp": true
+      "disabled": false,
+      "level": "info",
+      "timestamp": true
   }
 }
