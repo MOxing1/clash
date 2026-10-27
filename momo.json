@@ -23,7 +23,6 @@
   "outbounds": [
     {"tag": "默认代理", "type": "selector", "outbounds": ["香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择"]},
     {"tag": "AI", "type": "selector", "outbounds": ["美国手动", "日本手动", "狮城手动", "手动选择", "自动选择", "香港手动"]},
-    {"tag": "Gemini", "type": "selector", "outbounds": ["美国手动", "狮城手动", "日本手动", "手动选择", "自动选择", "香港手动"]},
     {"tag": "YouTube", "type": "selector", "outbounds": ["香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择"]},
     {"tag": "Google", "type": "selector", "outbounds": ["香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择"]},
     {"tag": "Github", "type": "selector", "outbounds": ["香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择"]},
@@ -43,7 +42,7 @@
     {"tag": "手动选择", "type": "selector", "outbounds": []},
     {"tag": "自动选择", "type": "urltest", "outbounds": [], "url": "https://clients1.google.com/generate_204", "interval": "30m", "tolerance": 100},
     {"tag": "延迟辅助", "type": "urltest", "outbounds": ["直连"], "url": "http://connect.rom.miui.com/generate_204", "interval": "30m"},
-    {"tag": "GLOBAL", "type": "selector", "outbounds": ["默认代理", "AI", "Gemini", "YouTube", "Google", "Github", "Telegram", "TikTok", "Netflix", "PayPal", "Steam", "Microsoft", "OneDrive", "Apple", "漏网之鱼", "香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择", "延迟辅助", "直连"]},
+    {"tag": "GLOBAL", "type": "selector", "outbounds": ["默认代理", "AI", "YouTube", "Google", "Github", "Telegram", "TikTok", "Netflix", "PayPal", "Steam", "Microsoft", "OneDrive", "Apple", "漏网之鱼", "香港手动", "美国手动", "日本手动", "狮城手动", "手动选择", "自动选择", "延迟辅助", "直连"]},
     {"tag": "直连", "type": "direct", "domain_resolver": "ali"}
   ],
   "route": {
@@ -56,9 +55,10 @@
       {"network": "icmp", "outbound": "直连"},
       {"clash_mode": "Direct", "outbound": "直连"},
       {"clash_mode": "Global", "outbound": "GLOBAL"},
-      {"rule_set": "geosite-gemini", "outbound": "Gemini"},
+      {"rule_set": "geosite-gemini", "outbound": "AI"},
       {"rule_set": "geosite-openai", "outbound": "AI"},
       {"rule_set": "geosite-anthropic", "outbound": "AI"},
+      {"domain_suffix": ["sydney.bing.com", "suno.ai", "suno.com", "v0.dev", "together.ai", "replicate.com"], "outbound": "AI"},
       {"rule_set": "geosite-ai", "outbound": "AI"},
       {"rule_set": "geosite-youtube", "outbound": "YouTube"},
       {"rule_set": "geosite-google", "outbound": "Google"},
