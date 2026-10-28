@@ -2,23 +2,17 @@
   "dns": {
     "servers": [
       {"tag": "local", "type": "local", "prefer_go": true},
-      {"tag": "ali", "type": "https", "server": "223.5.5.5", "detour": "直连"},
-      {"tag": "dnspod", "type": "https", "server": "1.12.12.12", "detour": "直连"},
+      {"tag": "ali", "type": "https", "server": "223.5.5.5"},
       {"tag": "google", "type": "https", "server": "8.8.8.8", "detour": "默认代理"},
-      {"tag": "cloudflare", "type": "https", "server": "1.1.1.1", "detour": "默认代理"},
       {"tag": "fakeip", "type": "fakeip", "inet4_range": "198.19.0.0/16"}
     ],
     "rules": [
       {"query_type": ["HTTPS", "SVCB"], "action": "reject"},
       {"query_type": "AAAA", "action": "reject"},
-      {"rule_set": "geosite-private", "server": "local"},
-      {"domain_suffix": ["lan", "local", "internal", "home.arpa", "arpa", "router.asus.com", "miwifi.com", "tplinkwifi.net", "tendawifi.com", "openwrt"], "server": "local"},
-      {"query_type": "PTR", "server": "local"},
       {"clash_mode": "Direct", "server": "ali"},
       {"clash_mode": "Global", "server": "fakeip"},
       {"rule_set": "geosite-fakeipfilter-cn", "server": "ali"},
       {"rule_set": "geosite-cn", "server": "ali"},
-      {"rule_set": "geosite-steamcn", "server": "ali"},
       {"query_type": "A", "server": "fakeip", "rewrite_ttl": 1}
     ],
     "final": "google",
@@ -63,7 +57,6 @@
       {"type": "logical", "mode": "or", "rules": [{"domain_suffix": "push.apple.com"}, {"rule_set": "geoip-telegram"}], "invert": true, "action": "sniff", "sniffer": ["http", "tls", "quic", "dns"], "timeout": "500ms"},
       {"inbound": "dns-in", "action": "hijack-dns"},
       {"ip_is_private": true, "outbound": "直连"},
-      {"rule_set": "geosite-private", "outbound": "直连"},
       {"type": "logical", "mode": "or", "rules": [{"port": 853}, {"protocol": ["stun", "quic"]}], "action": "reject", "no_drop": true},
       {"network": "icmp", "action": "resolve"},
       {"network": "icmp", "outbound": "直连"},
@@ -98,7 +91,6 @@
       {"rule_set": "geoip-cn", "outbound": "直连"}
     ],
     "rule_set": [
-      {"tag": "geosite-private", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs", "download_detour": "直连"},
       {"tag": "geosite-fakeipfilter-cn", "type": "remote", "format": "source", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/rules/fakeipfilter-cn.json", "download_detour": "直连"},
       {"tag": "geosite-gemini", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs", "download_detour": "直连"},
       {"tag": "geosite-openai", "type": "remote", "format": "binary", "url": "https://gh-proxy.com/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs", "download_detour": "直连"},
