@@ -66,7 +66,7 @@
       {"rule_set": "geosite-openai", "outbound": "AI"},
       {"rule_set": "geosite-anthropic", "outbound": "AI"},
       {"domain_suffix": ["waa-pa.clients6.google.com", "ogads-pa.clients6.google.com", "client-api.arkoselabs.com", "events.statsigapi.net", "featuregates.org", "auth0.com", "identrust.com", "intercom.io", "intercomcdn.com", "sydney.bing.com", "suno.ai", "suno.com", "v0.dev", "together.ai", "replicate.com"], "outbound": "AI"},
-      {"domain": ["meta.privacy-gateway.cloudflare.com", "meta.hpke-keys.privacy-gateway.cloudflare.com", "meta-ohttp-relay-prod.fastly-edge.com", "meta-ohttp-config-prod.fastly-edge.com", "hatch.ecto1.ai", "node.hatch.one"], "domain_suffix": ["muse.ai", "museai.com", "meta.ai", "meta.com", "atmeta.com", "llama.com", "metaaivm.com", "metaaiusercontent.com", "ecto1usercontent.com"], "outbound": "AI"},
+      {"domain": ["meta.privacy-gateway.cloudflare.com", "meta.hpke-keys.privacy-gateway.cloudflare.com", "meta-ohttp-relay-prod.fastly-edge.com", "meta-ohttp-config-prod.fastly-edge.com", "node.hatch.one"], "domain_suffix": ["muse.ai", "museai.com", "meta.ai", "meta.com", "atmeta.com", "llama.com", "metaaivm.com", "metaaiusercontent.com", "ecto1usercontent.com", "ecto1.ai"], "outbound": "AI"},
       {"rule_set": "geosite-ai", "outbound": "AI"},
       {"rule_set": "geosite-linuxdo", "outbound": "自定义站点"},
       {"domain_suffix": ["linux.do", "ldstatic.com", "cityline.com", "cityline.com.hk"], "outbound": "自定义站点"},
